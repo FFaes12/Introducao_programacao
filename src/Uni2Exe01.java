@@ -9,5 +9,6 @@ public class Uni2Exe01 {
       int n2 = teclado.nextInt();
       int soma = (n1 + n2);                        //realizando a soma de ambos os valores//
       System.out.println("a soma de ambos os numeros resulta em "+ (soma));      
+      teclado.close();
    }
 }
