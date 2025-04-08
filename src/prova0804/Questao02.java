@@ -3,53 +3,66 @@ package prova0804;
 import java.util.Scanner;
 
 public class Questao02 {
-  public static void main(String[] args) {
-     Scanner teclado = new Scanner (System.in);
-     System.out.print("Hora de chegada: ");
-        int horaChegada = teclado.nextInt();
-        System.out.print("Minuto de chegada: ");
-        int minChegada = teclado.nextInt();
-        System.out.print("Hora de saída: ");
-        int horaSaida = teclado.nextInt();
-        System.out.print("Minuto de saída: ");
-        int minSaida = teclado.nextInt();
 
-        if (horaChegada < 0 || horaChegada > 23 || minChegada < 0 || minChegada > 59
-                || horaSaida < 0 || horaSaida > 23 || minSaida < 0 || minSaida > 59
-                || (horaSaida < horaChegada) || (horaSaida == horaChegada && minSaida < minChegada)) {
-            System.out.println("Entrada inválida!");
+    public static void main(String[] args) {
+        Scanner teclafo = new Scanner(System.in);
+
+        int hChegada, mChegada, hSaida, mSaida;
+
+        System.out.println("Digite a hora e minuto de chegada:");
+        hChegada = teclafo.nextInt();
+        mChegada = teclafo.nextInt();
+
+        System.out.println("Digite a hora e minuto de saída:");
+        hSaida = teclafo.nextInt();
+        mSaida = teclafo.nextInt();
+
+        if (hChegada < 0 || hChegada > 23 || mChegada < 0 || mChegada > 59
+                || hSaida < 0 || hSaida > 23 || mSaida < 0 || mSaida > 59) {
+            System.out.println("Horario invalido");
             return;
         }
 
-        int minutosTotais = (horaSaida * 60 + minSaida) - (horaChegada * 60 + minChegada);
+        if (hSaida < hChegada || (hSaida == hChegada && mSaida <= mChegada)) {
+            System.out.println("Horario de saida deve ser depois da chegada");
+            return;
+        }
 
-        int horasPagas;
-        if (minutosTotais <= 29) {
-            horasPagas = (minutosTotais > 0) ? 1 : 0;
+        int minutosTotaisChegada = hChegada * 60 + mChegada;
+        int minutosTotaisSaida = hSaida * 60 + mSaida;
+        int tempoTotalMinutos = minutosTotaisSaida - minutosTotaisChegada;
+
+        int horas = tempoTotalMinutos / 60;
+        int minutosRestantes = tempoTotalMinutos % 60;
+
+        if (tempoTotalMinutos <= 30) {
+            horas = 1;
         } else {
-            horasPagas = (minutosTotais + 30) / 60;
+            if (minutosRestantes <= 29) {
+
+            } else {
+                horas += 1;
+            }
         }
 
         int preco = 0;
-        switch (horasPagas) {
+
+        switch (horas) {
             case 1:
+                preco = 10;
+                break;
             case 2:
-                preco = horasPagas * 10;
+                preco = 20;
                 break;
             case 3:
-            case 4:
-                preco = 2 * 5 + (horasPagas - 2) * 15;
+                preco = 35;
                 break;
             default:
-                if (horasPagas > 4) {
-                    preco = 2 * 5 + 2 * 7 + (horasPagas - 4) * 20;
-                }
-                break;
+                preco = 35 + (horas - 3) * 20;
         }
 
-        System.out.println("Preço cobrado = R$" + preco + ",00");
+        System.out.println("Preço a pagar: R$ " + preco + ",00");
 
-        teclado.close();
-
-  }
+        teclafo.close();
+    }
 }
