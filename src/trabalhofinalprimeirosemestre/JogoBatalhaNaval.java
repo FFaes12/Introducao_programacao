@@ -58,8 +58,6 @@ public class JogoBatalhaNaval {
 
         iniciarTabuleiro();
         randomizacaoDosNavios();
-        tabuleiroQueOPlayerNaoVaiVer();
-      
         oJogoMesmo();
         gameOver();
     }
@@ -105,40 +103,45 @@ public class JogoBatalhaNaval {
         }
     }
     
-    private void oJogoMesmo(){
+    private void oJogoMesmo() {
+    while (tentativas > 0 && acertos < navios) {
+        tabuleiroQueOPlayerVaiVer();
+        System.out.println("Há " + (navios - acertos) + " navios para afundar.");
+        System.out.println("Você tem " + tentativas + " tentativas restantes.");
+        System.out.println("Bom Jogo!");
 
-        while (tentativas > 0 && acertos < navios){
-        tabuleiroQueOPlayerVaiVer();    
-        System.out.println("Há " + (navios - acertos) + " navios para afunndar");
-        System.out.println("Você tem " + tentativas + " tentativas");
-        System.out.println("Bom Jogo");
+        System.out.println("Digite as coordenadas do tiro (linha e coluna):");
+        int linha = teclado.nextInt();
+        int coluna = teclado.nextInt();
 
-
-            System.out.println("Digite as coordenadas do tiro (linha e coluna):");
-            int linha = teclado.nextInt();
-            int coluna = teclado.nextInt();
-            if (linha < 0 || linha >= 8 || coluna < 0 || coluna >= 8) {
-                System.out.println("Coordenadas fora do campo. Tente novamente.");
-                continue;
-            }
-            if (tabuleiroQueOPlayerNaoVaiVer[linha][coluna] == navio) {
-                System.out.println("Acertou");
-                tabuleiroQueOPlayerVaiVer[linha][coluna] = acerto;
-                acertos++;
-
-            } else if (tabuleiroQueOPlayerVaiVer[linha][coluna] == mar) {
-                System.out.println("Mar");
-                tabuleiroQueOPlayerVaiVer[linha][coluna] = erro;
-            }else if (tabuleiroQueOPlayerVaiVer[linha][coluna] != mar) {
-                System.out.println("\nVocê já atirou neste local! Tentativa gasta.");
-                tentativas--; 
-                continue;    
-            }
-            tentativas--;
-
-        }
         
+        if (linha < 0 || linha >= 8 || coluna < 0 || coluna >= 8) {
+            System.out.println("Coordenadas fora do mapa");
+            continue; 
+        }
+
+        
+        if (tabuleiroQueOPlayerVaiVer[linha][coluna] != mar) {
+            System.out.println("Você já atirou aí");
+            tentativas--;
+            continue;
+            
+        }
+
+        
+        if (tabuleiroQueOPlayerNaoVaiVer[linha][coluna] == navio) {
+            System.out.println("Navio!");
+            tabuleiroQueOPlayerVaiVer[linha][coluna] = acerto; 
+            acertos++;
+        } else {
+            System.out.println("Mar");
+            tabuleiroQueOPlayerVaiVer[linha][coluna] = erro; 
+        }
+
+       
+        tentativas--;
     }
+}
     
     private void gameOver() {
         if (tentativas ==0 || acertos == navios) {
