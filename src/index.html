@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentação de Componentes Eletrônicos</title>
+    <style>
+        /* CSS Básico para melhor leitura - Sem dependências externas */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header, footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 1rem;
+            text-align: center;
+        }
+        main {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        nav li a {
+            display: block;
+            padding: 8px 15px;
+            margin: 5px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav li a:hover {
+            background-color: #2980b9;
+        }
+        section {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+            margin-bottom: 20px;
+        }
+        section:last-of-type {
+            border-bottom: none;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        h2 {
+            margin-top: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #ecf0f1;
+            font-weight: bold;
+            width: 150px;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Catálogo de Componentes Eletrônicos</h1>
+        <p>Documentação técnica para o kit de prototipagem.</p>
+    </header>
+
+    <main>
+        <nav>
+            <h2>Navegação Rápida</h2>
+            <ul>
+                <li><a href="#protoboard">Protoboard</a></li>
+                <li><a href="#servo">Servo Motor</a></li>
+                <li><a href="#joystick">Joystick</a></li>
+                <li><a href="#ultrassonico">Sensor Ultrassônico</a></li>
+                <li><a href="#dht">Sensor de Temp/Umidade</a></li>
+                <li><a href="#ldr">LDR</a></li>
+                <li><a href="#laser">Mini Laser</a></li>
+                <li><a href="#potenciometro">Potenciômetro</a></li>
+                <li><a href="#buzzer">Buzzer</a></li>
+                <li><a href="#display7">Display 7 Segmentos</a></li>
+                <li><a href="#ci4511">CI 4511</a></li>
+                <li><a href="#leds">LEDs</a></li>
+                <li><a href="#chaves">Chaves Momentâneas</a></li>
+                <li><a href="#resistores">Resistores</a></li>
+                <li><a href="#jumpers">Jumpers</a></li>
+                <li><a href="#outros">Outros Componentes</a></li>
+            </ul>
+        </nav>
+
+        <article>
+            <section id="protoboard">
+                <h2>1 x Protoboard 400</h2>
+                <table>
+                    <tr><th>Uso</th><td>Placa de ensaio para montagem de circuitos eletrônicos sem a necessidade de solda. Permite conexões rápidas e temporárias.</td></tr>
+                    <tr><th>Estrutura</th><td>Possui furos interconectados. As linhas horizontais são divididas ao meio e as colunas verticais nas laterais (barramentos) são contínuas para alimentação (VCC/GND).</td></tr>
+                </table>
+            </section>
+            
+            <section id="servo">
+                <h2>1 x Micro Servo Motor</h2>
+                <table>
+                    <tr><th>Uso</th><td>Atuador que permite controlar a posição angular de um eixo. Gira em um ângulo específico (geralmente de 0 a 180 graus).</td></tr>
+                    <tr><th>Pinagem</th><td>Tipicamente 3 fios: <strong>Marrom/Preto</strong> (GND), <strong>Vermelho</strong> (VCC, ~5V) e <strong>Laranja/Amarelo</strong> (Sinal PWM).</td></tr>
+                    <tr><th>Polaridade</th><td>Sim, a conexão de VCC e GND deve ser respeitada.</td></tr>
+                </table>
+            </section>
+
+            <section id="joystick">
+                <h2>1 x Módulo Joystick</h2>
+                <table>
+                    <tr><th>Uso</th><td>Dispositivo de entrada que fornece valores analógicos para os eixos X e Y e um sinal digital para o botão de clique.</td></tr>
+                    <tr><th>Pinagem</th><td><code>GND</code> (Terra), <code>+5V</code> (Alimentação), <code>VRx</code> (Saída analógica eixo X), <code>VRy</code> (Saída analógica eixo Y), <code>SW</code> (Saída digital do botão).</td></tr>
+                </table>
+            </section>
+
+            <section id="ultrassonico">
+                <h2>1 x Sensor Ultrassônico</h2>
+                <table>
+                    <tr><th>Uso</th><td>Mede distâncias emitindo um pulso sonoro de alta frequência e calculando o tempo que o eco leva para retornar.</td></tr>
+                    <tr><th>Pinagem</th><td><code>VCC</code> (Alimentação 5V), <code>Trig</code> (Trigger/Disparo do pulso), <code>Echo</code> (Recepção do eco), <code>GND</code> (Terra).</td></tr>
+                </table>
+            </section>
+
+            <section id="dht">
+                <h2>1 x Sensor de Temperatura e Umidade</h2>
+                <table>
+                    <tr><th>Uso</th><td>Mede a temperatura e a umidade relativa do ar.</td></tr>
+                    <tr><th>Pinagem</th><td>Geralmente 3 ou 4 pinos. Os essenciais são: <code>VCC</code> (Alimentação 3.3V-5V), <code>DATA</code> (Saída de dados), <code>GND</code> (Terra).</td></tr>
+                </table>
+            </section>
+
+            <section id="ldr">
+                <h2>1 x LDR 5mm</h2>
+                <table>
+                    <tr><th>Nome</th><td>Light-Dependent Resistor (Resistor Dependente de Luz).</td></tr>
+                    <tr><th>Uso</th><td>Sensor cuja resistência elétrica diminui à medida que a intensidade da luz aumenta.</td></tr>
+                    <tr><th>Polaridade</th><td>Não possui polaridade. Pode ser conectado em qualquer orientação.</td></tr>
+                </table>
+            </section>
+
+            <section id="laser">
+                <h2>1 x Mini Laser</h2>
+                <table>
+                    <tr><th>Uso</th><td>Módulo que emite um feixe de luz laser concentrado.</td></tr>
+                    <tr><th>Polaridade</th><td>Sim. Possui um terminal positivo (geralmente marcado ou com o pino mais longo) e um negativo.</td></tr>
+                </table>
+            </section>
+
+            <section id="potenciometro">
+                <h2>1 x Potenciômetro</h2>
+                <table>
+                    <tr><th>Uso</th><td>Resistor variável de três terminais. Usado para criar um divisor de tensão e fornecer um sinal analógico variável.</td></tr>
+                    <tr><th>Pinagem</th><td>Dois terminais externos (extremidades do resistor) e um terminal central (cursor). Conecta-se os externos ao VCC e GND, e lê-se o valor analógico no pino central.</td></tr>
+                </table>
+            </section>
+
+            <section id="buzzer">
+                <h2>1 x Buzzer</h2>
+                <table>
+                    <tr><th>Uso</th><td>Dispositivo que gera som (bipes). Pode ser ativo (só precisa de energia para apitar) ou passivo (precisa de um sinal com frequência para gerar tons diferentes).</td></tr>
+                    <tr><th>Polaridade</th><td>Sim. Geralmente possui um sinal de `+` no topo para indicar o pino positivo.</td></tr>
+                </table>
+            </section>
+
+            <section id="display7">
+                <h2>1 x Display de 7 Segmentos</h2>
+                <table>
+                    <tr><th>Uso</th><td>Exibe números (0-9) e alguns caracteres através de 7 segmentos de LED (a-g) e um ponto decimal (dp).</td></tr>
+                    <tr><th>Tipos</th><td><strong>Anodo Comum</strong> (o pino comum é ligado ao VCC) ou <strong>Catodo Comum</strong> (o pino comum é ligado ao GND).</td></tr>
+                </table>
+            </section>
+            
+            <section id="ci4511">
+                <h2>1 x CI 4511</h2>
+                <table>
+                    <tr><th>Nome</th><td>Circuito Integrado Decodificador BCD para 7 Segmentos.</td></tr>
+                    <tr><th>Uso</th><td>Simplifica o controle de um display de 7 segmentos. Ele recebe um número em formato binário (BCD) de 4 bits e acende os segmentos correspondentes.</td></tr>
+                </table>
+            </section>
+
+            <section id="leds">
+                <h2>LEDs (RGB, Alto Brilho, Vermelhos, Amarelos, Verdes)</h2>
+                <table>
+                    <tr><th>Nome</th><td>Light Emitting Diode (Diodo Emissor de Luz).</td></tr>
+                    <tr><th>Uso</th><td>Componente que emite luz quando uma corrente elétrica passa por ele. Usado como indicador visual.</td></tr>
+                    <tr><th>Polaridade</th><td>Sim. O terminal mais longo é o <strong>Anodo (+)</strong> e o mais curto é o <strong>Catodo (-)</strong>. A corrente flui do Anodo para o Catodo.</td></tr>
+                    <tr><th>Valores</th><td>É essencial usar um resistor limitador de corrente (ex: 300Ω) em série para evitar que o LED queime.</td></tr>
+                     <tr><th>LED RGB</th><td>Possui 4 terminais: um para cada cor (Vermelho, Verde, Azul) e um comum (Anodo ou Catodo Comum).</td></tr>
+                </table>
+            </section>
+
+            <section id="chaves">
+                <h2>4 x Chaves Momentâneas (Push-buttons)</h2>
+                <table>
+                    <tr><th>Uso</th><td>Interruptor que fecha um circuito apenas enquanto está pressionado. Usado como botão de entrada.</td></tr>
+                    <tr><th>Polaridade</th><td>Não possui.</td></tr>
+                </table>
+            </section>
+
+            <section id="resistores">
+                <h2>Resistores (15 x 300Ω, 5 x 10kΩ)</h2>
+                <table>
+                    <tr><th>Uso</th><td>Componente passivo que limita o fluxo de corrente elétrica em um circuito.</td></tr>
+                    <tr><th>Valores</th><td>A resistência é medida em Ohms (Ω). No kit: 300Ω (usado com LEDs) e 10kΩ (usado em circuitos de pull-up/pull-down com botões).</td></tr>
+                    <tr><th>Polaridade</th><td>Não possui.</td></tr>
+                </table>
+            </section>
+            
+            <section id="jumpers">
+                <h2>Jumpers (30 x M/M, 10 x M/F)</h2>
+                <table>
+                    <tr><th>Uso</th><td>Fios condutores com conectores nas pontas para interligar componentes na protoboard.</td></tr>
+                    <tr><th>Tipos</th><td><strong>Macho/Macho (M/M)</strong>: ponta em ambas as extremidades. <strong>Macho/Fêmea (M/F)</strong>: uma ponta e um conector fêmea.</td></tr>
+                </table>
+            </section>
+            
+            <section id="outros">
+                <h2>Outros Componentes</h2>
+                <table>
+                    <tr><th>1 x Workplate 400</th><td>Placa base para fixar a protoboard.</td></tr>
+                    <tr><th>1 x Garra Ant</th><td>Acessório mecânico, geralmente para ser usado com o servo motor.</td></tr>
+                    <tr><th>1 x Knob para Potenciômetro</th><td>Peça plástica para facilitar o giro do eixo do potenciômetro.</td></tr>
+                    <tr><th>1 x Chave Phillips</th><td>Ferramenta para montagem.</td></tr>
+                    <tr><th>1 x Cabo USB</th><td>Usado para alimentação e/ou programação de microcontroladores.</td></tr>
+                    <tr><th>1 x Chave de Acesso</th><td>Credencial para o manual online oficial do kit.</td></tr>
+                </table>
+            </section>
+
+        </article>
+    </main>
+
+    <footer>
+        <p>Projeto de Documentação de Componentes - Criado com HTML5 Semântico</p>
+    </footer>
+
+</body>
+</html>
